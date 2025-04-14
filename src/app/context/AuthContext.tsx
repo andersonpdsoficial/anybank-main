@@ -4,6 +4,7 @@ import { Session } from "@supabase/supabase-js"
 
 interface AuthContextType {
     session: Session | null;
+    login: (email: string, password: string) => Promise<void>;
     logout: () => Promise<void>;
 }
 
@@ -35,8 +36,18 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         setSession(null)
     }
 
+    const login = async (email: string, password: string) => {
+        const { error } = await supabase.auth.signInWithPassword({
+            email,
+            password,
+        })
+        if (error) {
+            throw error
+        }
+    }
+
     return (
-        <AuthContext.Provider value={{ session, logout }}>
+        <AuthContext.Provider value={{ session, logout, login }}>
             {children}
         </AuthContext.Provider>
     )
