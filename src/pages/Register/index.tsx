@@ -1,15 +1,15 @@
 import { useState } from "react";
-import { Button } from "../Button";
-import { Fieldset } from "../Fieldset";
-import { FormLabel } from "../FormLabel";
-import { TextField } from "../TextField";
-import { Figure, Form, FormActions, Heading, Image } from "../Form";
+import { Button } from "../../components/Button";
+import { Fieldset } from "../../components/Fieldset";
+import { FormLabel } from "../../components/FormLabel";
+import { TextField } from "../../components/TextField";
+import { Figure, Form, FormActions, Heading, Image } from "../../components/Form";
 import { CreateUser } from "../../domain/useCase/CreateUser";
 import { UserSupabaseRepository } from "../../infra/supabase/UserSupabaseRepository";
 import { toast } from "react-toastify";
 
 const createUser = new CreateUser(new UserSupabaseRepository())
-export const FormRegister = () => {
+export const Register = () => {
     const [user, setUser] = useState({ name: '', email: '', password: '' });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
