@@ -1,10 +1,9 @@
 import { toast } from "react-toastify";
 import { useAuthContext } from "../../app/hooks/useAuthContex";
-import { IconAvatar } from "../Icons";
-import { ListItem } from "../Sidebar/styles";
-import { TransparentButton } from "../TransparentButton";
-import { List } from "./styles";
+import { List, ListItem } from "./styles";
 import { useNavigate } from "react-router";
+import { IconAvatar } from "../../components/Icons";
+import { TransparentButton } from "../../components/TransparentButton";
 
 
 export const AutheticadedActionList = () => {
@@ -19,7 +18,7 @@ export const AutheticadedActionList = () => {
             navigate('/auth/login')
         } catch (error) {
             console.error('Error logging out:', error)
-            toast.error('Erro ao deslogar')
+            toast.error('Erro ao deslogar') 
         }
     }
 

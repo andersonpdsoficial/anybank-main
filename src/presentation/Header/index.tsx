@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom"
-import { IconLogo } from "../Icons"
 import { Container, StyledHeader, List, ListItem } from "./styles"
 import { useAuthContext } from "../../app/hooks/useAuthContex"
 import { AutheticadedActionList } from "./AutheticadedActionList"
 import { UnautheticadedActionList } from "./UnautheticadedActionList"
+import { IconLogo } from "../../components/Icons"
 
 export const Header = () => {
     const { session } = useAuthContext()
