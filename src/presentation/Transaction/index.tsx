@@ -1,3 +1,4 @@
+import { ITransaction } from "../../domain/entities/ITransaction";
 import { TransactionAmount, TransactionDate, TransactionInfo, TransactionType, TransactionWrapper } from "./styles";
 
 const currencyFormatter = new Intl.NumberFormat('pt-BR', {
@@ -10,12 +11,6 @@ const formatDate = (date: Date) => {
     return date.toLocaleDateString('pt-BR', options);
 };
 
-export interface ITransaction {
-    id: number;
-    value: number;
-    type: string;
-    date: Date;
-  }
   
   interface TransactionProps {
     transaction: ITransaction;
@@ -29,7 +24,7 @@ export const Transaction = ({ transaction }: TransactionProps) => {
     return (
         <TransactionWrapper>
             <TransactionInfo>
-                <TransactionType>{type}</TransactionType>
+                <TransactionType>{type.display}</TransactionType>
                 <TransactionDate>{formattedDate}</TransactionDate>
             </TransactionInfo>
             <TransactionAmount>{formattedValue}</TransactionAmount>

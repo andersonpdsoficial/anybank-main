@@ -3,6 +3,10 @@ import { Sidebar } from "../presentation/Sidebar"
 import { Account } from "../presentation/Account"
 import { TransactionForm } from "../components/TransactionForm"
 import { Statement } from "../presentation/Statement"
+import { useState, useEffect     } from "react";
+import { ITransaction } from "../domain/entities/ITransaction";
+import { ListAllTransactions } from "../domain/useCase/ListAllTransactions";
+import { TransactionSupabaseRepository } from "../infra/supabase/TransactionSupabaseRepository";
 
 const Main = styled.main`
     flex-grow: 1;
@@ -38,8 +42,16 @@ const transactions = [
   }
 ];
 
+const listTransactions = new ListAllTransactions(new TransactionSupabaseRepository())
 
 const Home = () => {
+
+  const [transactions, setTransactions] = useState<ITransaction[]>([]);
+
+  useEffect(() => {
+    listTransactions.execute()
+        .then(data => setTransactions(data))
+}, [])
 
   return (
     <>
