@@ -25,7 +25,7 @@ export const AutheticadedActionList = () => {
     return (
         <List>
             <ListItem>
-                BOas Vindas
+                Boas Vindas
             </ListItem>
             <ListItem>
                 <IconAvatar />
