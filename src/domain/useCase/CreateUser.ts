@@ -1,10 +1,11 @@
-
 import { IUserRepository } from "../repositores/IUserRepository";
+import { IUser } from "../entities/IUser";
 
 export class CreateUser {
-    constructor(private  userRepository: IUserRepository) {
+    constructor(private userRepository: IUserRepository) {
     }
-    async execute() {
-        await this.userRepository.listAll();
+    
+    async execute(user: Omit<IUser, "id">): Promise<void> {
+        await this.userRepository.createUser(user);
     }
 }
