@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         supabase.auth.getSession()
           .then(({ data: { session } }) => {
               setSession(session)
-              console.log('getSession', session)
+              
           })
           .finally(() => setLoading(false))
 
@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             data: { subscription },
         } = supabase.auth.onAuthStateChange((_event, session) => {
             setSession(session)
-            console.log('onAuthStateChange', session)
+            
         })
 
         return () => subscription.unsubscribe()
